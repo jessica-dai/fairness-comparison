@@ -11,6 +11,7 @@ def local_results_path():
         f = open("localpathoverride.txt")
         path = f.read()
         f.close()
+        path = pathlib.Path(path)
     else:
         home = pathlib.Path.home()
         path = home / '.fairness'
