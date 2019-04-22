@@ -50,7 +50,7 @@ def run_eval_alg(algorithm, train, test, dataset, processed_data, all_sensitive_
     sensitive = test[single_sensitive].values.tolist()
 
     # params is a dict mapping parameter names to default values
-    predicted, params, predictions_list =  \ 
+    predicted, params, predictions_list =  \
         run_alg(algorithm, train, test, dataset, all_sensitive_attributes, single_sensitive,
                 privileged_vals, positive_val)
 
@@ -182,12 +182,12 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
                                     #                   algorithm.get_name(), params, i, results)
             
             if (balanced):
-                new_filename = dataset_obj.get_name() + "_" + sensitive + "_balanced.csv"
+                new_filename = dataset_obj.get_dataset_name() + "_" + sensitive + "_balanced.csv"
             else:
-                new_filename = dataset_obj.get_name() + "_" + sensitive + ".csv"
+                new_filename = dataset_obj.get_dataset_name() + "_" + sensitive + ".csv"
 
             # create file
-            with open(../results/new_filename as f):
+            with open("../results/"+new_filename, 'w') as f:
                 writer = csv.writer(f)
                 writer.writerows(data_to_write)
 
