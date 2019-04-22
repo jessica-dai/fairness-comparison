@@ -2,6 +2,7 @@ import fire
 import os
 import statistics
 import sys
+import csv
 
 import pandas as pd 
 import numpy as np
@@ -9,7 +10,7 @@ import numpy as np
 from fairness.data.objects.list import DATASETS, get_dataset_names
 from fairness.algorithms.list import ALGORITHMS
 from fairness.benchmark import create_detailed_file, get_algorithm_names, run_alg, write_alg_results # run_eval_alg, 
-import balanced_splits # TODO idk what this import should look like
+from balanced_splits import BalancedProcessedData
 from fairness.data.objects.ProcessedData import ProcessedData
 from fairness.algorithms.ParamGridSearch import ParamGridSearch
 from fairness.metrics.CV import CV
@@ -34,9 +35,6 @@ def get_metrics(dataset, sensitive_dict, tag):
 
     return metrics
 
-def write_baseline_file():
-    pass
-
 
 def run_eval_alg(algorithm, train, test, dataset, processed_data, all_sensitive_attributes,
                  single_sensitive, tag):
@@ -51,7 +49,8 @@ def run_eval_alg(algorithm, train, test, dataset, processed_data, all_sensitive_
     actual = test[dataset.get_class_attribute()].values.tolist()
     sensitive = test[single_sensitive].values.tolist()
 
-    predicted, params, predictions_list =  \
+    # params is a dict mapping parameter names to default values
+    predicted, params, predictions_list =  \ 
         run_alg(algorithm, train, test, dataset, all_sensitive_attributes, single_sensitive,
                 privileged_vals, positive_val)
 
@@ -62,11 +61,12 @@ def run_eval_alg(algorithm, train, test, dataset, processed_data, all_sensitive_
 
     sensitive_dict = processed_data.get_sensitive_values(tag)
     one_run_results = []
-    # baseline = None
+    # baseline_results = []
 
     for metric in get_metrics(dataset, sensitive_dict, tag):
         baseline = metric.calc(None, actual, dict_sensitive_lists, 
                             single_sensitive, privileged_vals, positive_val)
+        one_run_results.append(baseline)
         result = metric.calc(actual, predicted, dict_sensitive_lists, single_sensitive,
                              privileged_vals, positive_val)
         print(metric.get_name() + " baseline: " + str(baseline))
@@ -113,7 +113,7 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
         if (balanced): 
             print("\n Processing with balanced splits: \n")
             processed_dataset = BalancedProcessedData(dataset_obj) 
-            train_test_splits = balanced_dataset.create_balanced_train_test_splits(num_trials)
+            train_test_splits = processed_dataset.create_balanced_train_test_splits(num_trials)
         else:
             print("\n Processing with random splits: \n")
             processed_dataset = ProcessedData(dataset_obj)
@@ -125,11 +125,13 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
 
             print("Sensitive attribute:" + sensitive)
 
-            detailed_files = dict((k, create_detailed_file(
-                                          dataset_obj.get_results_filename(sensitive, k),
-                                          dataset_obj,
-                                          processed_dataset.get_sensitive_values(k), k))
-                                  for k in train_test_splits.keys())
+            # detailed_files = dict((k, create_detailed_file(
+            #                               dataset_obj.get_results_filename(sensitive, k),
+            #                               dataset_obj,
+            #                               processed_dataset.get_sensitive_values(k), k))
+            #                       for k in train_test_splits.keys())
+
+            data_to_write = [] # ADDED BY JESS
 
             for algorithm in ALGORITHMS:
                 if not algorithm.get_name() in algorithms_to_run:
@@ -137,16 +139,18 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
 
                 print("    Algorithm: %s" % algorithm.get_name())
                 print("       supported types: %s" % algorithm.get_supported_data_types())
-                if algorithm.__class__ is ParamGridSearch:
-                    param_files =  \
-                        dict((k, create_detailed_file(
-                                     dataset_obj.get_param_results_filename(sensitive, k,
-                                                                            algorithm.get_name()),
-                                     dataset_obj, processed_dataset.get_sensitive_values(k), k))
-                          for k in train_test_splits.keys())
+                # if algorithm.__class__ is ParamGridSearch:
+                #     param_files =  \
+                #         dict((k, create_detailed_file(
+                #                      dataset_obj.get_param_results_filename(sensitive, k,
+                #                                                             algorithm.get_name()),
+                #                      dataset_obj, processed_dataset.get_sensitive_values(k), k))
+                #           for k in train_test_splits.keys())
+
                 for i in range(0, num_trials):
                     print("trial " + str(i))
                     for supported_tag in algorithm.get_supported_data_types():
+                        print("supported tag: " + str(supported_tag))
                         train, test = train_test_splits[supported_tag][i]
                         try:
                             params, results, param_results =  \
@@ -155,23 +159,46 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
                         except Exception as e:
                             import traceback
                             traceback.print_exc(file=sys.stderr)
-                            print("idk")
+                            print("something went wrong")
                             # print("Failed: %s" % e, file=sys.stderr)
                         else:
-                            write_alg_results(detailed_files[supported_tag],
-                                              algorithm.get_name(), params, i, results)
-                    
+                            # write_alg_results(detailed_files[supported_tag],
+                            #                   algorithm.get_name(), params, i, results)
+
+                            row_starter = [algorithm.get_name(), i, str(supported_tag)]
+                            data_to_write.append(row_starter + results)
+
                             if algorithm.__class__ is ParamGridSearch:
                                 for params, results in param_results:
-                                    write_alg_results(param_files[supported_tag],
-                                                      algorithm.get_name(), params, i, results)
+                                    # TODO fix, this is super super hacky
+                                    row_end = []
+                                    for (k,v) in params.items():
+                                        row_end.append(k)
+                                        row_end.append(v)
+                                    
+                                    data_to_write.append(row_starter + results + row_end)
 
-            print("Results written to:")
-            for supported_tag in algorithm.get_supported_data_types():
-                print("    %s" % dataset_obj.get_results_filename(sensitive, supported_tag))
+                                    # write_alg_results(param_files[supported_tag],
+                                    #                   algorithm.get_name(), params, i, results)
+            
+            if (balanced):
+                new_filename = dataset_obj.get_name() + "_" + sensitive + "_balanced.csv"
+            else:
+                new_filename = dataset_obj.get_name() + "_" + sensitive + ".csv"
 
-            for detailed_file in detailed_files.values():
-                detailed_file.close()
+            # create file
+            with open(../results/new_filename as f):
+                writer = csv.writer(f)
+                writer.writerows(data_to_write)
+
+
+            # print("Results written to:")
+            # for supported_tag in algorithm.get_supported_data_types():
+            #     print("    %s" % dataset_obj.get_results_filename(sensitive, supported_tag))
+
+            # for detailed_file in detailed_files.values():
+            #     detailed_file.close()
 
 if __name__ == '__main__': 
+    run(dataset=[DATASETS[0].get_dataset_name()], algorithm=["SVM"], balanced = True)
     run(dataset=[DATASETS[0].get_dataset_name()], algorithm=["SVM"])
