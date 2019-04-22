@@ -132,6 +132,17 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
             #                       for k in train_test_splits.keys())
 
             data_to_write = [] # ADDED BY JESS
+            # add heading row
+            data_to_write.append(["Algorithm name", 
+                                    "trial", 
+                                    "data type", 
+                                    "baseline DI Binary", 
+                                    "post-alg DI Binary",
+                                    "baseline DI avg all",
+                                    "post-alg DI avg all",
+                                    "baseline CV",
+                                    "post-alg CV"
+                                    ])
 
             for algorithm in ALGORITHMS:
                 if not algorithm.get_name() in algorithms_to_run:
@@ -187,7 +198,7 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
                 new_filename = dataset_obj.get_dataset_name() + "_" + sensitive + ".csv"
 
             # create file
-            with open("../results/"+new_filename, 'w') as f:
+            with open("results/"+new_filename, 'w') as f:
                 writer = csv.writer(f)
                 writer.writerows(data_to_write)
 
