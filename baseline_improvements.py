@@ -211,5 +211,5 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
             #     detailed_file.close()
 
 if __name__ == '__main__': 
-    run(dataset=[DATASETS[0].get_dataset_name()], algorithm=["SVM"], balanced = True)
-    run(dataset=[DATASETS[0].get_dataset_name()], algorithm=["SVM"])
+    run(balanced = True)
+    run()
