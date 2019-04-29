@@ -211,5 +211,5 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
             #     detailed_file.close()
 
 if __name__ == '__main__': 
-    run(dataset = ['ricci'], balanced=True)
+    run(dataset = ['propublica-recidivism'])
     # run()
