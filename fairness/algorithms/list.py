@@ -16,7 +16,7 @@ from fairness.metrics.MCC import MCC
 
 ALGORITHMS = [
    SVM(), GaussianNB(), 
-   # LogisticRegression(), 
+   LogisticRegression(), 
    DecisionTree(),     # baseline
    KamishimaAlgorithm(),                                          # Kamishima
    CaldersAlgorithm(),                                            # Calders
