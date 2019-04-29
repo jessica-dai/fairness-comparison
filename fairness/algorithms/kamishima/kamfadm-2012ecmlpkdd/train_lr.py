@@ -123,7 +123,7 @@ def main(opt):
     logger.info("start time = " + start_time.isoformat())
 
     # main process
-    clr = LogisticRegression(C=float(opt.C), penalty='l2', fit_intercept=True)
+    clr = LogisticRegression(C=float(opt.C), penalty='l2', fit_intercept=True, solver='lbfgs')
     clr.fit(X, y)
 
     # set end and elapsed time
