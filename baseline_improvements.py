@@ -211,5 +211,6 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
             #     detailed_file.close()
 
 if __name__ == '__main__': 
-    run(dataset = ['propublica-recidivism'])
+    print("running script")
+    run(dataset = ['propublica-recidivism'], balanced=True)
     # run()
