@@ -2,6 +2,7 @@ import fire
 import os
 import statistics
 import sys
+import csv
 
 import pandas as pd
 import numpy as np
@@ -140,13 +141,13 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
 
                 print("    Algorithm: %s" % algorithm.get_name())
                 print("       supported types: %s" % algorithm.get_supported_data_types())
-                if algorithm.__class__ is ParamGridSearch:
-                    param_files =  \
-                        dict((k, create_detailed_file(
-                                     dataset_obj.get_param_results_filename(sensitive, k,
-                                                                            algorithm.get_name()),
-                                     dataset_obj, processed_dataset.get_sensitive_values(k), k))
-                          for k in train_test_splits.keys())
+                # if algorithm.__class__ is ParamGridSearch:
+                #     param_files =  \
+                #         dict((k, create_detailed_file(
+                #                      dataset_obj.get_param_results_filename(sensitive, k,
+                #                                                             algorithm.get_name()),
+                #                      dataset_obj, processed_dataset.get_sensitive_values(k), k))
+                #           for k in train_test_splits.keys())
                 for i in range(0, num_trials):
                     for supported_tag in algorithm.get_supported_data_types():
                         train, test = train_test_splits[supported_tag][i]
