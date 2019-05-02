@@ -212,5 +212,5 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
 
 if __name__ == '__main__': 
     print("running script")
-    run(dataset = ['propublica-recidivism'], balanced=True)
+    run(dataset = ['ricci'], balanced=True)
     # run()
