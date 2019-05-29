@@ -1,0 +1,223 @@
+SVM,numerical-binsensitive, ,0.2131268037518037,0.21475944796658727
+SVM,numerical, ,0.2131268037518037,0.21475944796658727
+GaussianNB,numerical-binsensitive, ,-0.004924242424242414,0.08734864545994622
+GaussianNB,numerical, ,-0.004924242424242414,0.08734864545994622
+LR,numerical-binsensitive, ,0.0,0.0
+LR,numerical, ,0.0,0.0
+DecisionTree,numerical-binsensitive, ,0.001388888888888884,0.028088539466884284
+DecisionTree,numerical, ,0.001388888888888884,0.028088539466884284
+Kamishima,numerical-binsensitive, ,-0.4856983294483294,0.14356275646748257
+Calders,numerical-binsensitive, ,1.4112103174603172,0.24547558186228494
+ZafarBaseline,numerical-binsensitive, ,-0.019097222222222227,0.10254819045571083
+ZafarFairness,numerical-binsensitive, ,0.8073908730158731,0.3780865804773004
+ZafarAccuracy,numerical-binsensitive, ,0.009259259259259252,0.08218407627813301
+Kamishima-accuracy,numerical-binsensitive,0.0,-0.4891323953823954,0.13376921353540303
+Kamishima-accuracy,numerical-binsensitive,1.0,-0.4856983294483294,0.14356275646748257
+Kamishima-accuracy,numerical-binsensitive,2.0,-0.4816919191919192,0.15507189007923275
+Kamishima-accuracy,numerical-binsensitive,3.0,-0.4712752525252525,0.18529900776748465
+Kamishima-accuracy,numerical-binsensitive,4.0,-0.47013888888888894,0.18551027599569792
+Kamishima-accuracy,numerical-binsensitive,5.0,-0.4587752525252526,0.18339837704804465
+Kamishima-accuracy,numerical-binsensitive,10.0,-0.4895833333333333,0.16612324602646786
+Kamishima-accuracy,numerical-binsensitive,15.0,-0.44895382395382394,0.18970367375596553
+Kamishima-accuracy,numerical-binsensitive,20.0,-0.45555555555555555,0.3
+Kamishima-accuracy,numerical-binsensitive,30.0,-0.49118589743589747,0.106063232608234
+Kamishima-accuracy,numerical-binsensitive,40.0,-0.42243589743589743,0.29649012432095506
+Kamishima-accuracy,numerical-binsensitive,50.0,-0.1376984126984127,0.4781047831526781
+Kamishima-accuracy,numerical-binsensitive,100.0,-0.018467643467643496,0.46735808011772123
+Kamishima-accuracy,numerical-binsensitive,150.0,0.06944444444444442,0.46435439052516775
+Kamishima-accuracy,numerical-binsensitive,200.0,0.25277777777777777,0.34970225430595475
+Kamishima-accuracy,numerical-binsensitive,250.0,0.25902777777777775,0.3336521912444488
+Kamishima-accuracy,numerical-binsensitive,300.0,0.14771825396825394,0.40734480945817514
+Kamishima-DIavgall,numerical-binsensitive,0.0,-0.4891323953823954,0.13376921353540303
+Kamishima-DIavgall,numerical-binsensitive,1.0,-0.4856983294483294,0.14356275646748257
+Kamishima-DIavgall,numerical-binsensitive,2.0,-0.4816919191919192,0.15507189007923275
+Kamishima-DIavgall,numerical-binsensitive,3.0,-0.4712752525252525,0.18529900776748465
+Kamishima-DIavgall,numerical-binsensitive,4.0,-0.47013888888888894,0.18551027599569792
+Kamishima-DIavgall,numerical-binsensitive,5.0,-0.4587752525252526,0.18339837704804465
+Kamishima-DIavgall,numerical-binsensitive,10.0,-0.4895833333333333,0.16612324602646786
+Kamishima-DIavgall,numerical-binsensitive,15.0,-0.44895382395382394,0.18970367375596553
+Kamishima-DIavgall,numerical-binsensitive,20.0,-0.45555555555555555,0.3
+Kamishima-DIavgall,numerical-binsensitive,30.0,-0.49118589743589747,0.106063232608234
+Kamishima-DIavgall,numerical-binsensitive,40.0,-0.42243589743589743,0.29649012432095506
+Kamishima-DIavgall,numerical-binsensitive,50.0,-0.1376984126984127,0.4781047831526781
+Kamishima-DIavgall,numerical-binsensitive,100.0,-0.018467643467643496,0.46735808011772123
+Kamishima-DIavgall,numerical-binsensitive,150.0,0.06944444444444442,0.46435439052516775
+Kamishima-DIavgall,numerical-binsensitive,200.0,0.25277777777777777,0.34970225430595475
+Kamishima-DIavgall,numerical-binsensitive,250.0,0.25902777777777775,0.3336521912444488
+Kamishima-DIavgall,numerical-binsensitive,300.0,0.14771825396825394,0.40734480945817514
+Feldman-SVM,numerical-binsensitive, ,0.9170634920634921,0.4990456453296121
+Feldman-SVM,numerical, ,0.27421536796536794,0.32545422556015746
+Feldman-GaussianNB,numerical-binsensitive, ,0.37548701298701304,0.08938029010883862
+Feldman-GaussianNB,numerical, ,0.38302669552669555,0.0968324462544789
+Feldman-LR,numerical-binsensitive, ,0.417347582972583,0.16081992591221267
+Feldman-LR,numerical, ,0.4424963924963925,0.12020873265636473
+Feldman-DecisionTree,numerical-binsensitive, ,0.40265602453102456,0.16340974964182828
+Feldman-DecisionTree,numerical, ,0.31128767066267066,0.20727985292928036
+Feldman-SVM-DIavgall,numerical-binsensitive,0.0,0.2131268037518037,0.21475944796658727
+Feldman-SVM-DIavgall,numerical-binsensitive,0.05,0.1598800505050505,0.17753560479338396
+Feldman-SVM-DIavgall,numerical-binsensitive,0.1,0.1155715811965812,0.21697334598274068
+Feldman-SVM-DIavgall,numerical-binsensitive,0.15,0.057765151515151505,0.09302106713948023
+Feldman-SVM-DIavgall,numerical-binsensitive,0.2,0.13115079365079363,0.1014992616795781
+Feldman-SVM-DIavgall,numerical-binsensitive,0.25,0.26438943001443,0.20128783409776263
+Feldman-SVM-DIavgall,numerical-binsensitive,0.3,0.31450667388167386,0.22777184463296618
+Feldman-SVM-DIavgall,numerical-binsensitive,0.35,0.45369318181818186,0.3416080228275373
+Feldman-SVM-DIavgall,numerical-binsensitive,0.4,0.471744227994228,0.32270479876694463
+Feldman-SVM-DIavgall,numerical-binsensitive,0.45,0.6197285353535353,0.3774456451002784
+Feldman-SVM-DIavgall,numerical-binsensitive,0.5,0.5398674242424242,0.29427976325667443
+Feldman-SVM-DIavgall,numerical-binsensitive,0.55,0.5923340548340548,0.5043004260524148
+Feldman-SVM-DIavgall,numerical-binsensitive,0.6,0.8423611111111111,0.4547635603622318
+Feldman-SVM-DIavgall,numerical-binsensitive,0.65,0.9913194444444444,0.6171600292761279
+Feldman-SVM-DIavgall,numerical-binsensitive,0.7,0.8350694444444443,0.44074318745916724
+Feldman-SVM-DIavgall,numerical-binsensitive,0.75,0.9806051587301589,0.7044140677827965
+Feldman-SVM-DIavgall,numerical-binsensitive,0.8,1.2859126984126985,1.262498129063221
+Feldman-SVM-DIavgall,numerical-binsensitive,0.85,1.2870039682539685,1.5527823951888398
+Feldman-SVM-DIavgall,numerical-binsensitive,0.9,0.8219742063492065,0.5804723824841403
+Feldman-SVM-DIavgall,numerical-binsensitive,0.95,0.7804563492063492,0.5194103861444185
+Feldman-SVM-DIavgall,numerical-binsensitive,1.0,0.9170634920634921,0.4990456453296121
+Feldman-SVM-DIavgall,numerical,0.0,0.2131268037518037,0.21475944796658727
+Feldman-SVM-DIavgall,numerical,0.05,0.20030663780663777,0.14902285312279945
+Feldman-SVM-DIavgall,numerical,0.1,0.21031746031746032,0.12997470537101125
+Feldman-SVM-DIavgall,numerical,0.15,0.13604347041847037,0.1356355894631979
+Feldman-SVM-DIavgall,numerical,0.2,0.15545634920634918,0.09702974346446581
+Feldman-SVM-DIavgall,numerical,0.25,0.2031430375180375,0.07347919120400072
+Feldman-SVM-DIavgall,numerical,0.3,0.21530240592740593,0.09353063718537942
+Feldman-SVM-DIavgall,numerical,0.35,0.21371198246198242,0.11335382390804094
+Feldman-SVM-DIavgall,numerical,0.4,0.3133838383838383,0.1150435286626074
+Feldman-SVM-DIavgall,numerical,0.45,0.31411643911643905,0.22503759750717583
+Feldman-SVM-DIavgall,numerical,0.5,0.3543740981240981,0.17308670189493458
+Feldman-SVM-DIavgall,numerical,0.55,0.5230429292929293,0.5043182230711788
+Feldman-SVM-DIavgall,numerical,0.6,0.4124368686868687,0.3115567145402499
+Feldman-SVM-DIavgall,numerical,0.65,0.502763209013209,0.4486611177135209
+Feldman-SVM-DIavgall,numerical,0.7,0.41343795093795094,0.27811050189790715
+Feldman-SVM-DIavgall,numerical,0.75,0.47979242979242975,0.37281250857403214
+Feldman-SVM-DIavgall,numerical,0.8,0.5044531857031858,0.2766044567463475
+Feldman-SVM-DIavgall,numerical,0.85,0.8213834776334776,0.9381420738918314
+Feldman-SVM-DIavgall,numerical,0.9,0.47803932178932185,0.3939370014213657
+Feldman-SVM-DIavgall,numerical,0.95,0.745459054834055,0.8809405488413814
+Feldman-SVM-DIavgall,numerical,1.0,0.27421536796536794,0.32545422556015746
+Feldman-SVM-accuracy,numerical-binsensitive,0.0,0.2131268037518037,0.21475944796658727
+Feldman-SVM-accuracy,numerical-binsensitive,0.05,0.1598800505050505,0.17753560479338396
+Feldman-SVM-accuracy,numerical-binsensitive,0.1,0.1155715811965812,0.21697334598274068
+Feldman-SVM-accuracy,numerical-binsensitive,0.15,0.057765151515151505,0.09302106713948023
+Feldman-SVM-accuracy,numerical-binsensitive,0.2,0.13115079365079363,0.1014992616795781
+Feldman-SVM-accuracy,numerical-binsensitive,0.25,0.26438943001443,0.20128783409776263
+Feldman-SVM-accuracy,numerical-binsensitive,0.3,0.31450667388167386,0.22777184463296618
+Feldman-SVM-accuracy,numerical-binsensitive,0.35,0.45369318181818186,0.3416080228275373
+Feldman-SVM-accuracy,numerical-binsensitive,0.4,0.471744227994228,0.32270479876694463
+Feldman-SVM-accuracy,numerical-binsensitive,0.45,0.6197285353535353,0.3774456451002784
+Feldman-SVM-accuracy,numerical-binsensitive,0.5,0.5398674242424242,0.29427976325667443
+Feldman-SVM-accuracy,numerical-binsensitive,0.55,0.5923340548340548,0.5043004260524148
+Feldman-SVM-accuracy,numerical-binsensitive,0.6,0.8423611111111111,0.4547635603622318
+Feldman-SVM-accuracy,numerical-binsensitive,0.65,0.9913194444444444,0.6171600292761279
+Feldman-SVM-accuracy,numerical-binsensitive,0.7,0.8350694444444443,0.44074318745916724
+Feldman-SVM-accuracy,numerical-binsensitive,0.75,0.9806051587301589,0.7044140677827965
+Feldman-SVM-accuracy,numerical-binsensitive,0.8,1.2859126984126985,1.262498129063221
+Feldman-SVM-accuracy,numerical-binsensitive,0.85,1.2870039682539685,1.5527823951888398
+Feldman-SVM-accuracy,numerical-binsensitive,0.9,0.8219742063492065,0.5804723824841403
+Feldman-SVM-accuracy,numerical-binsensitive,0.95,0.7804563492063492,0.5194103861444185
+Feldman-SVM-accuracy,numerical-binsensitive,1.0,0.9170634920634921,0.4990456453296121
+Feldman-SVM-accuracy,numerical,0.0,0.2131268037518037,0.21475944796658727
+Feldman-SVM-accuracy,numerical,0.05,0.20030663780663777,0.14902285312279945
+Feldman-SVM-accuracy,numerical,0.1,0.21031746031746032,0.12997470537101125
+Feldman-SVM-accuracy,numerical,0.15,0.13604347041847037,0.1356355894631979
+Feldman-SVM-accuracy,numerical,0.2,0.15545634920634918,0.09702974346446581
+Feldman-SVM-accuracy,numerical,0.25,0.2031430375180375,0.07347919120400072
+Feldman-SVM-accuracy,numerical,0.3,0.21530240592740593,0.09353063718537942
+Feldman-SVM-accuracy,numerical,0.35,0.21371198246198242,0.11335382390804094
+Feldman-SVM-accuracy,numerical,0.4,0.3133838383838383,0.1150435286626074
+Feldman-SVM-accuracy,numerical,0.45,0.31411643911643905,0.22503759750717583
+Feldman-SVM-accuracy,numerical,0.5,0.3543740981240981,0.17308670189493458
+Feldman-SVM-accuracy,numerical,0.55,0.5230429292929293,0.5043182230711788
+Feldman-SVM-accuracy,numerical,0.6,0.4124368686868687,0.3115567145402499
+Feldman-SVM-accuracy,numerical,0.65,0.502763209013209,0.4486611177135209
+Feldman-SVM-accuracy,numerical,0.7,0.41343795093795094,0.27811050189790715
+Feldman-SVM-accuracy,numerical,0.75,0.47979242979242975,0.37281250857403214
+Feldman-SVM-accuracy,numerical,0.8,0.5044531857031858,0.2766044567463475
+Feldman-SVM-accuracy,numerical,0.85,0.8213834776334776,0.9381420738918314
+Feldman-SVM-accuracy,numerical,0.9,0.47803932178932185,0.3939370014213657
+Feldman-SVM-accuracy,numerical,0.95,0.745459054834055,0.8809405488413814
+Feldman-SVM-accuracy,numerical,1.0,0.27421536796536794,0.32545422556015746
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.0,-0.004924242424242414,0.08734864545994622
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.05,-0.020328282828282827,0.0727265055024066
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.1,0.006439393939393962,0.05244217521860643
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.15,0.020328282828282845,0.07260803655062974
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.2,0.007702020202020215,0.0609325433935236
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.25,0.02601010101010102,0.07180603400650175
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.3,0.045328282828282836,0.07834684983907236
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.35,0.038383838383838395,0.07261407436255776
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.4,0.06237373737373738,0.07697299430886234
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.45,0.1320707070707071,0.07910774231640373
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.5,0.1476957070707071,0.08061159849753523
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.55,0.13835227272727274,0.07804598851246597
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.6,0.20170003607503606,0.0977418144567146
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.65,0.25419372294372294,0.1369935853934349
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.7,0.2677940115440115,0.09549796988311023
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.75,0.2791576479076479,0.1105925820201321
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.8,0.29453463203463204,0.09564580435817352
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.85,0.3248917748917749,0.0935437054453605
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.9,0.3248917748917749,0.0935437054453605
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,0.95,0.37548701298701304,0.08938029010883862
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,1.0,0.37548701298701304,0.08938029010883862
+Feldman-GaussianNB-DIavgall,numerical,0.0,-0.004924242424242414,0.08734864545994622
+Feldman-GaussianNB-DIavgall,numerical,0.05,-0.020328282828282827,0.0727265055024066
+Feldman-GaussianNB-DIavgall,numerical,0.1,0.0021464646464646577,0.06384458179380677
+Feldman-GaussianNB-DIavgall,numerical,0.15,0.003093434343434359,0.06813296159210083
+Feldman-GaussianNB-DIavgall,numerical,0.2,0.020328282828282845,0.07260803655062974
+Feldman-GaussianNB-DIavgall,numerical,0.25,0.03421717171717173,0.07401930415102084
+Feldman-GaussianNB-DIavgall,numerical,0.3,0.06616161616161616,0.10042316851308125
+Feldman-GaussianNB-DIavgall,numerical,0.35,0.0707070707070707,0.0935468882649263
+Feldman-GaussianNB-DIavgall,numerical,0.4,0.11666666666666665,0.12143051663552443
+Feldman-GaussianNB-DIavgall,numerical,0.45,0.14494047619047618,0.11813176978325503
+Feldman-GaussianNB-DIavgall,numerical,0.5,0.18108315295815297,0.10702044951821195
+Feldman-GaussianNB-DIavgall,numerical,0.55,0.1939303751803752,0.10450607058109324
+Feldman-GaussianNB-DIavgall,numerical,0.6,0.2267225829725829,0.12432552438805324
+Feldman-GaussianNB-DIavgall,numerical,0.65,0.2399170274170274,0.09423494794563386
+Feldman-GaussianNB-DIavgall,numerical,0.7,0.24859758297258291,0.08834270246465391
+Feldman-GaussianNB-DIavgall,numerical,0.75,0.3034000721500721,0.10143246711699702
+Feldman-GaussianNB-DIavgall,numerical,0.8,0.31679292929292924,0.11835003211875073
+Feldman-GaussianNB-DIavgall,numerical,0.85,0.3285082972582972,0.12398774760229321
+Feldman-GaussianNB-DIavgall,numerical,0.9,0.32869769119769116,0.10732586364654782
+Feldman-GaussianNB-DIavgall,numerical,0.95,0.38302669552669555,0.0968324462544789
+Feldman-GaussianNB-DIavgall,numerical,1.0,0.38302669552669555,0.0968324462544789
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.0,-0.004924242424242414,0.08734864545994622
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.05,-0.020328282828282827,0.0727265055024066
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.1,0.006439393939393962,0.05244217521860643
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.15,0.020328282828282845,0.07260803655062974
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.2,0.007702020202020215,0.0609325433935236
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.25,0.02601010101010102,0.07180603400650175
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.3,0.045328282828282836,0.07834684983907236
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.35,0.038383838383838395,0.07261407436255776
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.4,0.06237373737373738,0.07697299430886234
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.45,0.1320707070707071,0.07910774231640373
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.5,0.1476957070707071,0.08061159849753523
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.55,0.13835227272727274,0.07804598851246597
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.6,0.20170003607503606,0.0977418144567146
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.65,0.25419372294372294,0.1369935853934349
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.7,0.2677940115440115,0.09549796988311023
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.75,0.2791576479076479,0.1105925820201321
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.8,0.29453463203463204,0.09564580435817352
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.85,0.3248917748917749,0.0935437054453605
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.9,0.3248917748917749,0.0935437054453605
+Feldman-GaussianNB-accuracy,numerical-binsensitive,0.95,0.37548701298701304,0.08938029010883862
+Feldman-GaussianNB-accuracy,numerical-binsensitive,1.0,0.37548701298701304,0.08938029010883862
+Feldman-GaussianNB-accuracy,numerical,0.0,-0.004924242424242414,0.08734864545994622
+Feldman-GaussianNB-accuracy,numerical,0.05,-0.020328282828282827,0.0727265055024066
+Feldman-GaussianNB-accuracy,numerical,0.1,0.0021464646464646577,0.06384458179380677
+Feldman-GaussianNB-accuracy,numerical,0.15,0.003093434343434359,0.06813296159210083
+Feldman-GaussianNB-accuracy,numerical,0.2,0.020328282828282845,0.07260803655062974
+Feldman-GaussianNB-accuracy,numerical,0.25,0.03421717171717173,0.07401930415102084
+Feldman-GaussianNB-accuracy,numerical,0.3,0.06616161616161616,0.10042316851308125
+Feldman-GaussianNB-accuracy,numerical,0.35,0.0707070707070707,0.0935468882649263
+Feldman-GaussianNB-accuracy,numerical,0.4,0.11666666666666665,0.12143051663552443
+Feldman-GaussianNB-accuracy,numerical,0.45,0.14494047619047618,0.11813176978325503
+Feldman-GaussianNB-accuracy,numerical,0.5,0.18108315295815297,0.10702044951821195
+Feldman-GaussianNB-accuracy,numerical,0.55,0.1939303751803752,0.10450607058109324
+Feldman-GaussianNB-accuracy,numerical,0.6,0.2267225829725829,0.12432552438805324
+Feldman-GaussianNB-accuracy,numerical,0.65,0.2399170274170274,0.09423494794563386
+Feldman-GaussianNB-accuracy,numerical,0.7,0.24859758297258291,0.08834270246465391
+Feldman-GaussianNB-accuracy,numerical,0.75,0.3034000721500721,0.10143246711699702
+Feldman-GaussianNB-accuracy,numerical,0.8,0.31679292929292924,0.11835003211875073
+Feldman-GaussianNB-accuracy,numerical,0.85,0.3285082972582972,0.12398774760229321
+Feldman-GaussianNB-accuracy,numerical,0.9,0.32869769119769116,0.10732586364654782
+Feldman-GaussianNB-accuracy,numerical,0.95,0.38302669552669555,0.0968324462544789
+Feldman-GaussianNB-accuracy,numerical,1.0,0.38302669552669555,0.0968324462544789

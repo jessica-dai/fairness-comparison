@@ -1,0 +1,31 @@
+SVM,numerical, ,0.26015092630000003,0.29830287049058496
+SVM,numerical-binsensitive, ,0.26015092630000003,0.29830287049058496
+GaussianNB,numerical, ,-0.0901318589,0.10985111190863718
+GaussianNB,numerical-binsensitive, ,-0.0901318589,0.10985111190863718
+LR,numerical, ,-0.0092864418,0.023930817302266136
+LR,numerical-binsensitive, ,-0.0092864418,0.023930817302266136
+DecisionTree,numerical, ,-0.007986695799999999,0.033215990007342246
+DecisionTree,numerical-binsensitive, ,-0.007986695799999999,0.033215990007342246
+Kamishima,numerical-binsensitive, ,-0.3400709851,0.2533031443491798
+Calders,numerical-binsensitive, ,2.2263828235999994,1.5842735111532638
+ZafarBaseline,numerical-binsensitive, ,0.000463048899999996,0.09532435220394805
+ZafarFairness,numerical-binsensitive, ,0.6551025605999999,0.26885595906691134
+ZafarAccuracy,numerical-binsensitive, ,0.02252537379999999,0.1056316991307864
+Kamishima-accuracy,numerical-binsensitive,,-0.018470734188235274,0.5356204890265004
+Kamishima-DIavgall,numerical-binsensitive,,-0.018470734188235274,0.5356204890265004
+Feldman-SVM,numerical, ,0.43842924530000005,0.24611184002196634
+Feldman-SVM,numerical-binsensitive, ,0.7751087736999999,0.464210971132278
+Feldman-GaussianNB,numerical, ,0.41757627059999997,0.22252769557917287
+Feldman-GaussianNB,numerical-binsensitive, ,0.4726176557,0.20570656084040279
+Feldman-LR,numerical, ,0.538827559,0.2887529802902593
+Feldman-LR,numerical-binsensitive, ,0.6599207765000001,0.33748239732762136
+Feldman-DecisionTree,numerical, ,0.44835733070000006,0.27833868044289223
+Feldman-DecisionTree,numerical-binsensitive, ,0.5913304289999999,0.2656144477164019
+Feldman-SVM-DIavgall,numerical,,0.3642741677333333,0.28858927828124603
+Feldman-SVM-DIavgall,numerical-binsensitive,,0.5730605050523809,0.5992396472027686
+Feldman-SVM-accuracy,numerical,,0.3642741677333333,0.28858927828124603
+Feldman-SVM-accuracy,numerical-binsensitive,,0.5730605050523809,0.5992396472027686
+Feldman-GaussianNB-DIavgall,numerical,,0.16297178102380952,0.22904768152174473
+Feldman-GaussianNB-DIavgall,numerical-binsensitive,,0.18133688638095238,0.21891846828333594
+Feldman-GaussianNB-accuracy,numerical,,0.16297178102380952,0.22904768152174473
+Feldman-GaussianNB-accuracy,numerical-binsensitive,,0.18133688638095238,0.21891846828333594
