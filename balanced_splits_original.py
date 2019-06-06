@@ -10,8 +10,9 @@ from fairness.data.objects.list import DATASETS, get_dataset_names
 from fairness.data.objects.ProcessedData import ProcessedData, TAGS, TRAINING_PERCENT
 from fairness.algorithms.list import ALGORITHMS
 from fairness.metrics.list import get_metrics
-from fairness.benchmark import create_detailed_file, run_eval_alg, write_alg_results
-# from fairness.
+from fairness.benchmark import run_eval_alg, write_alg_results # rewritten: create_detailed_file
+
+import results_writing_new # newly added
 
 from fairness.algorithms.ParamGridSearch import ParamGridSearch
 
@@ -67,14 +68,14 @@ class BalancedProcessedData(ProcessedData):
                 train_fraction = list(np.concatenate([train_fraction,c_attr_idx[:split_ix]]))
                 test_fraction = list( np.concatenate([test_fraction,c_attr_idx[split_ix:]]))
 
-#                 for cur_sensitive in sensitive_levels:
-#                     # randomly split each value of the protected class 
-#                     c_attr_idx = np.where(sensitive_vals.values == cur_sensitive)[0]
-#                     np.random.shuffle(c_attr_idx)
+            #     for cur_sensitive in sensitive_levels:
+            #         # randomly split each value of the protected class 
+            #         c_attr_idx = np.where(sensitive_vals.values == cur_sensitive)[0]
+            #         np.random.shuffle(c_attr_idx)
 
-#                     split_ix = int(len(c_attr_idx) * TRAINING_PERCENT)
-#                     train_fraction = np.concatenate([train_fraction,c_attr_idx[:split_ix]])
-#                     test_fraction = np.concatenate([test_fraction,c_attr_idx[split_ix:]])
+            #         split_ix = int(len(c_attr_idx) * TRAINING_PERCENT)
+            #         train_fraction = np.concatenate([train_fraction,c_attr_idx[:split_ix]])
+            #         test_fraction = np.concatenate([test_fraction,c_attr_idx[split_ix:]])
             # TODO if multiple balances, get list for each interesection and randomly split each of those
             # appned all trains together and all tests together
             
@@ -95,6 +96,9 @@ def get_algorithm_names():
     for a in result:
         print("  %s" % a)
     return result
+
+def create_detailed_file(filename, dataset, sensitive_dict, tag):
+    return results_writing_new.NewResultsFile(filename, dataset, sensitive_dict, tag)
 
 def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
         algorithm = get_algorithm_names()):
@@ -159,3 +163,7 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
 
             for detailed_file in detailed_files.values():
                 detailed_file.close()
+
+if __name__ == '__main__': 
+    print("running script")
+    run(dataset = ['ricci'])
