@@ -13,6 +13,7 @@ from fairness.metrics.list import get_metrics
 from fairness.benchmark import run_eval_alg, write_alg_results # rewritten: create_detailed_file
 
 import results_writing_new # newly added
+import warnings
 
 from fairness.algorithms.ParamGridSearch import ParamGridSearch
 
@@ -165,5 +166,6 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
                 detailed_file.close()
 
 if __name__ == '__main__': 
-    print("running script")
-    run(dataset = ['ricci'])
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore")
+        run(dataset = ['ricci'])
