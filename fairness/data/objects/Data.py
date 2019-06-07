@@ -111,8 +111,10 @@ class Data():
         return (self.get_dataset_name() + "_" + sensitive_attr + "_" + tag + '.csv')
 
     def get_param_results_filename(self, sensitive_attr, tag, algname):
-        RESULT_DIR.mkdir(parents=True, exist_ok=True)
-        return RESULT_DIR / (algname + '_' + self.get_dataset_name() + "_" + sensitive_attr + \
+        # RESULT_DIR.mkdir(parents=True, exist_ok=True)
+        # return RESULT_DIR / (algname + '_' + self.get_dataset_name() + "_" + sensitive_attr + \
+        #        "_" + tag + '.csv')
+        return (algname + '_' + self.get_dataset_name() + "_" + sensitive_attr + \
                "_" + tag + '.csv')
 
     def get_analysis_filename(self, sensitive_attr, tag):
