@@ -61,18 +61,13 @@ class ControlledProcessedData(ProcessedData):
         """
         num: number of trials (number of batches)
         ctrl_attr: the attribute to be controlled 
-        # TODO balance_outcomes: flag for whether to ensure perfect proportionality of outcomes for each subset
-        
+
         recall that this relies on self.split_proportion = q/r
             q = % protected training -> q/(q+r) percent of protected attribute in training
                 -> q/(q+r) = k/(k+1)
             r = % protected testing -> rest in training
 
         """
-        # if self.has_controlled_splits:
-        #     print("hsdlkfjsd")
-        #     return self.controlled_splits
-        # print("hello")
 
         # numbers used in proportion calculations
         n_priv = len(np.where(self.dfs['numerical-binsensitive'][ctrl_attr] == 1)[0])  
@@ -128,12 +123,12 @@ class ControlledProcessedData(ProcessedData):
 
                 # some algebra
                 train_size = int((4*(len(test_fraction) + len(c_attr_idx)) - len(train_fraction))/5)
-                test_size = len(c_attr_idx) - train_size
+                # test_size = len(c_attr_idx) - train_size
                 # train_size = int(0.8*self.data_size) - len(train_fraction) # number to go in train
                 # test_size = int(0.2*self.data_size) - len(test_fraction) #number to go in test
 
-                if (train_size + test_size) > len(c_attr_idx):
-                    return False # we could reduce OR just throw false here
+                # if (train_size + test_size) > len(c_attr_idx):
+                #     return False # we could reduce OR just throw false here
                 
                 train_fraction = list(np.concatenate([train_fraction,c_attr_idx[:train_size]]))
                 test_fraction = list( np.concatenate([test_fraction,c_attr_idx[train_size:]]))
@@ -182,8 +177,8 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
             print("Sensitive attribute:" + sensitive)
 
             train_test_splits = processed_dataset.create_controlled_train_test_splits(num_trials, sensitive)
-            if train_test_splits == False:
-                continue # then this means K was wrong
+            # if train_test_splits == False:
+            #     continue # then this means K was wrong
 
             detailed_files = dict((k, create_detailed_file(
                                           dataset_obj.get_results_filename_ctrl(sensitive, k, ctrl),
@@ -236,16 +231,3 @@ if __name__ == '__main__':
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore")
         run(dataset = ['ricci'], ctrl = 1)
-
-    # p_data = ControlledProcessedData(DATASETS[0])
-    # p_data.set_proportion(1.3)
-    # train_test_splits = p_data.create_controlled_train_test_splits(10, 'Race')
-    # if train_test_splits == False:
-    #     print("sigh")
-    # print("hi")
-    # print(len(train_test_splits['numerical-binsensitive'][9][1]))
-    # # train, test = train_test_splits['numerical-binsensitive']
-    # print(len(train))
-    # print(len(test))
-
-    # print(train[0])
