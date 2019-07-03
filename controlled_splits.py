@@ -69,13 +69,15 @@ class ControlledProcessedData(ProcessedData):
             r = % protected testing -> rest in training
 
         """
-        if self.has_controlled_splits:
-            return self.controlled_splits
+        # if self.has_controlled_splits:
+        #     print("hsdlkfjsd")
+        #     return self.controlled_splits
+        # print("hello")
 
         # numbers used in proportion calculations
         n_priv = len(np.where(self.dfs['numerical-binsensitive'][ctrl_attr] == 1)[0])  
             # count # of privileged examples of the dataset w/r/t current attribute
-        prop = self.split_proportion/(self.split_proportion + 1) # proportion of sens data to be in training
+        prop = 4*self.split_proportion/(4*self.split_proportion + 1) # proportion of sens data to be in training
 
         if balance_outcomes: # adds class attribute to be split over
             ctrls = [ctrl_attr]
@@ -93,37 +95,52 @@ class ControlledProcessedData(ProcessedData):
                 non_priv.append(cur_sensitive)
             else:
                 priv.append(cur_sensitive)
-        # print(sensitive_levels[0][0] == '1') # (true in all cases)
 
         for i in range(0, num): # for every trial
             # create empty lists for each  portion
             train_fraction = np.asarray([])
             test_fraction = np.asarray([])
 
-            for np in non_priv: # deal w the non-priv class first
-                c_attr_idx = np.where(sensitive_vals == np)[0] # find relevant indices
+            for nonp in non_priv: # deal w the non-priv class first
+                print("nonp: " + nonp)
+                c_attr_idx = np.where(sensitive_vals == nonp)[0] # find relevant indices
                 np.random.shuffle(c_attr_idx) # and shuffle
 
-                total_size = min(len(c_attr_idx), 0.8*self.data_size) # total number of sens examples to be using
-                split_ix = int(prop*total_size) 
+                print("hi")
+                print(len(c_attr_idx))
+
+                # total_size = min(len(c_attr_idx), 0.8*self.data_size) # total number of sens examples to be using
+                # split_ix = int(prop*total_size) 
+                split_ix = int(prop*len(c_attr_idx))
 
                 train_fraction = list(np.concatenate([train_fraction,c_attr_idx[:split_ix]]))
+                print(len(train_fraction))
                 test_fraction = list( np.concatenate([test_fraction,c_attr_idx[split_ix:]]))
+                print(len(test_fraction))
 
             for p in priv: # fill in whatever's remaining
+                print("p: " + p)
+
                 c_attr_idx = np.where(sensitive_vals == p)[0]
                 np.random.shuffle(c_attr_idx)
 
-                train_size = int(0.8*self.data_size) - len(train_fraction) # number to go in train
-                test_size = int(0.2*self.data_size) - len(test_fraction) #number to go in test
+                print(len(c_attr_idx))
+
+                # some algebra
+                train_size = int((4*(len(test_fraction) + len(c_attr_idx)) - len(train_fraction))/5)
+                test_size = len(c_attr_idx) - train_size
+                # train_size = int(0.8*self.data_size) - len(train_fraction) # number to go in train
+                # test_size = int(0.2*self.data_size) - len(test_fraction) #number to go in test
 
                 if (train_size + test_size) > len(c_attr_idx):
                     return False # we could reduce OR just throw false here
                 
                 train_fraction = list(np.concatenate([train_fraction,c_attr_idx[:train_size]]))
-                test_fraction = list( np.concatenate([test_fraction,c_attr_idx[train_size:train_size + test_size]]))
+                test_fraction = list( np.concatenate([test_fraction,c_attr_idx[train_size:]]))
 
-
+            print("split finished")
+            print(len(train_fraction))
+            print(len(test_fraction))
             for (k, v) in self.dfs.items():
                 train = self.dfs[k].iloc[train_fraction]
                 test = self.dfs[k].iloc[test_fraction]
@@ -145,7 +162,7 @@ def create_detailed_file(filename, dataset, sensitive_dict, tag):
     return results_writing_new.NewResultsFile(filename, dataset, sensitive_dict, tag)
 
 def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
-        algorithm = get_algorithm_names()):
+        algorithm = get_algorithm_names(), ctrl = 1):
     algorithms_to_run = algorithm
 
     print("Datasets: '%s'" % dataset)
@@ -156,7 +173,7 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
         print("\nEvaluating dataset:" + dataset_obj.get_dataset_name())
 
         processed_dataset = ControlledProcessedData(dataset_obj) 
-        # processed_dataset.set_proportion() do this after instantiating
+        processed_dataset.set_proportion(ctrl) # do this after instantiating
         # moved train test split creation inside the attribute
 
         all_sensitive_attributes = dataset_obj.get_sensitive_attributes_with_joint()
@@ -169,7 +186,7 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
                 continue # then this means K was wrong
 
             detailed_files = dict((k, create_detailed_file(
-                                          dataset_obj.get_results_filename(sensitive, k),
+                                          dataset_obj.get_results_filename_ctrl(sensitive, k, ctrl),
                                           dataset_obj,
                                           processed_dataset.get_sensitive_values(k), k))
                                   for k in train_test_splits.keys())
@@ -183,13 +200,14 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
                 if algorithm.__class__ is ParamGridSearch:
                     param_files =  \
                         dict((k, create_detailed_file(
-                                     dataset_obj.get_param_results_filename(sensitive, k,
-                                                                            algorithm.get_name()),
+                                     dataset_obj.get_param_results_filename_ctrl(sensitive, k,
+                                                                            algorithm.get_name(), ctrl),
                                      dataset_obj, processed_dataset.get_sensitive_values(k), k))
                           for k in train_test_splits.keys())
                 for i in range(0, num_trials):
-                    for supported_tag in algorithm.get_supported_data_types():
-                        train, test = train_test_splits[supported_tag][i]
+                    for supported_tag in ['numerical-binsensitive']: # algorithm.get_supported_data_types():
+                        train = train_test_splits[supported_tag][i][0]
+                        test = train_test_splits[supported_tag][i][1]
                         try:
                             params, results, param_results =  \
                                 run_eval_alg(algorithm, train, test, dataset_obj, processed_dataset,
@@ -215,10 +233,19 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
 
 
 if __name__ == '__main__': 
-    # with warnings.catch_warnings():
-    #     warnings.filterwarnings("ignore")
-    #     run(dataset = ['ricci'])
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore")
+        run(dataset = ['ricci'], ctrl = 1)
 
-    processed_dataset = ControlledProcessedData(DATASETS[0])
-    train_test_splits = processed_dataset.create_controlled_train_test_splits(1, 'Race', False)
-    # print(type(train_test_splits))
+    # p_data = ControlledProcessedData(DATASETS[0])
+    # p_data.set_proportion(1.3)
+    # train_test_splits = p_data.create_controlled_train_test_splits(10, 'Race')
+    # if train_test_splits == False:
+    #     print("sigh")
+    # print("hi")
+    # print(len(train_test_splits['numerical-binsensitive'][9][1]))
+    # # train, test = train_test_splits['numerical-binsensitive']
+    # print(len(train))
+    # print(len(test))
+
+    # print(train[0])
