@@ -51,7 +51,7 @@ class ControlledProcessedData(ProcessedData):
        
     def set_proportion(self, prop):
         self.split_proportion = prop
-        if (prop != 0):
+        if (prop != 1):
             self.has_controlled_splits = True
     
     def get_protected_idx(self):
@@ -97,51 +97,43 @@ class ControlledProcessedData(ProcessedData):
             test_fraction = np.asarray([])
 
             for nonp in non_priv: # deal w the non-priv class first
-                print("nonp: " + nonp)
+                # print("nonp: " + nonp)
                 c_attr_idx = np.where(sensitive_vals == nonp)[0] # find relevant indices
                 np.random.shuffle(c_attr_idx) # and shuffle
 
-                print("hi")
-                print(len(c_attr_idx))
+                # print("hi")
+                # print(len(c_attr_idx))
 
-                # total_size = min(len(c_attr_idx), 0.8*self.data_size) # total number of sens examples to be using
-                # split_ix = int(prop*total_size) 
                 split_ix = int(prop*len(c_attr_idx))
 
                 train_fraction = list(np.concatenate([train_fraction,c_attr_idx[:split_ix]]))
-                print(len(train_fraction))
+                # print(len(train_fraction))
                 test_fraction = list( np.concatenate([test_fraction,c_attr_idx[split_ix:]]))
-                print(len(test_fraction))
+                # print(len(test_fraction))
 
             for p in priv: # fill in whatever's remaining
-                print("p: " + p)
+                # print("p: " + p)
 
                 c_attr_idx = np.where(sensitive_vals == p)[0]
                 np.random.shuffle(c_attr_idx)
 
-                print(len(c_attr_idx))
+                # print(len(c_attr_idx))
 
                 # some algebra
                 train_size = int((4*(len(test_fraction) + len(c_attr_idx)) - len(train_fraction))/5)
-                # test_size = len(c_attr_idx) - train_size
-                # train_size = int(0.8*self.data_size) - len(train_fraction) # number to go in train
-                # test_size = int(0.2*self.data_size) - len(test_fraction) #number to go in test
-
-                # if (train_size + test_size) > len(c_attr_idx):
-                #     return False # we could reduce OR just throw false here
                 
                 train_fraction = list(np.concatenate([train_fraction,c_attr_idx[:train_size]]))
                 test_fraction = list( np.concatenate([test_fraction,c_attr_idx[train_size:]]))
 
-            print("split finished")
-            print(len(train_fraction))
-            print(len(test_fraction))
+            # print("split finished")
+            # print(len(train_fraction))
+            # print(len(test_fraction))
             for (k, v) in self.dfs.items():
                 train = self.dfs[k].iloc[train_fraction]
                 test = self.dfs[k].iloc[test_fraction]
                 self.controlled_splits[k].append((train, test))
 
-        # print(self.balanced_splits.keys())
+        print(self.controlled_splits.keys())
             
         self.has_controlled_splits = True
         return self.controlled_splits
@@ -177,8 +169,6 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
             print("Sensitive attribute:" + sensitive)
 
             train_test_splits = processed_dataset.create_controlled_train_test_splits(num_trials, sensitive)
-            # if train_test_splits == False:
-            #     continue # then this means K was wrong
 
             detailed_files = dict((k, create_detailed_file(
                                           dataset_obj.get_results_filename_ctrl(sensitive, k, ctrl),
