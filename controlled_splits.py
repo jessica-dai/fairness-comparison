@@ -216,8 +216,21 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
             for detailed_file in detailed_files.values():
                 detailed_file.close()
 
+def gen_ctrl_params():
+
+    params = [0.5, 0.5714285714285714, 0.6666666666666666]
+    # params = []
+    # for p in np.linspace(1, 2, 5):
+    #     params.append(p)
+    #     params.append(1/p)
+    # return params
 
 if __name__ == '__main__': 
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore")
-        run(dataset = ['ricci'], ctrl = 1)
+
+        prms = gen_ctrl_params()
+        for p in prms:
+            if p == 1:
+                continue
+            run(dataset = ['adult'], ctrl = p)
