@@ -27,7 +27,7 @@ k_Ratios = [0.5, 0.57142857142857, 0.66666666666667, 0.8, 1.0, 1.25, 1.5, 1.75, 
         b) single dataset single algorithm all k values (color-code k values)
             algs*datasets
 """
-def cal_vs_TPR(singleK = True, dataset, sens, ax_x, ax_y):
+def cal_vs_TPR(singleK, dataset, sens, ax_x, ax_y):
 
     # access relevant data - we want to combine all of the files for the given dataset into a single df
     loaded_dataset = pd.DataFrame()
