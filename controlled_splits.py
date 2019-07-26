@@ -209,28 +209,42 @@ def run(num_trials = NUM_TRIALS_DEFAULT, dataset = get_dataset_names(),
                                     write_alg_results(param_files[supported_tag],
                                                       algorithm.get_name(), params, i, results)
 
-            print("Results written to:")
-            for supported_tag in algorithm.get_supported_data_types():
-                print("    %s" % dataset_obj.get_results_filename(sensitive, supported_tag))
+            print("Finished analyzing:")
+            print(dataset_obj.get_dataset_name())
+            print("finished analyzing p="+ str(ctrl))
+            # for supported_tag in algorithm.get_supported_data_types():
+            #     print("    %s" % dataset_obj.get_results_filename(sensitive, supported_tag))
 
             for detailed_file in detailed_files.values():
                 detailed_file.close()
 
 def gen_ctrl_params():
 
-    params = [0.5, 0.5714285714285714, 0.6666666666666666]
-    # params = []
-    # for p in np.linspace(1, 2, 5):
-    #     params.append(p)
-    #     params.append(1/p)
-    # return params
+    # params = [0.5, 0.5714285714285714]
+    # params = [0.6666666666666666, 0.8]
+    # params = [1.25, 1.5]
+    params = [1.75, 2]
+
+    # how params were calculated, for reference
+        # params = []
+        # for p in np.linspace(1, 2, 5):
+        #     params.append(p)
+        #     params.append(1/p)
+
+    return params
 
 if __name__ == '__main__': 
+
+    data = sys.argv[1]
+
+    prms = []
+
+    for i in range(len(sys.argv) - 2):
+        prms.append(float(sys.argv[i+2]))
+    
+
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore")
 
-        prms = gen_ctrl_params()
         for p in prms:
-            if p == 1:
-                continue
-            run(dataset = ['adult'], ctrl = p)
+            run(dataset = [data], ctrl = p)
