@@ -64,6 +64,18 @@ def run():
                     sensitive, privileged_vals, positive_val)
                 row.append(baseline)
 
+            # calculate priors
+            df = processed_dataset.get_dataframe('numerical-binsensitive')
+            total = len(df.index)
+
+            print(df)
+
+            total_priv = df.sum()[sens]
+
+            prior = 1.0 - float(total_priv)/float(total)
+
+            row.append(prior)
+
             rows_to_write.append(row)
     
     with open("baseline_list.csv", "w") as f:
