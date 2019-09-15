@@ -125,7 +125,7 @@ def pretty_graph(dataset, sens, graphtype, ax_x, ax_y, xlim, ylim, alglist):
 
     imgname = "pretty" + "_" + dataset + "_" + sens + "_" + graphtype + "_" + alglist[0]
     
-    sns.relplot(x = ax_x, y = ax_y, hue="k", col="algorithm", col_wrap = 3, data=new_dataset).set(xlim=xlim, ylim=ylim).savefig(imgname)
+    sns.relplot(x = ax_x, y = ax_y, hue="k", col="algorithm", data=new_dataset).set(xlim=xlim, ylim=ylim).savefig(imgname)
     # sns.scatterplot(x=ax_x, y=ax_y, hue="k", data=new_dataset).figure.savefig(imgname)
     # plot.set(xlim=xlim, ylim=ylim) # needs to be in the form (start, end)
     # plot.figure.savefig(imgname)
