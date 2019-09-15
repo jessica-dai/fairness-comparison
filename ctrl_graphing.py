@@ -125,28 +125,31 @@ def pretty_graph(dataset, sens, graphtype, ax_x, ax_y, xlim, ylim, alglist):
 
     imgname = "pretty" + "_" + dataset + "_" + sens + "_" + graphtype
     
-    sns.relplot(x = ax_x, y = ax_y, hue="k", col="algorithm", col_wrap = 3, data=new_dataset).savefig(imgname)
+    sns.relplot(x = ax_x, y = ax_y, hue="k", col="algorithm", col_wrap = 3, data=new_dataset).set(xlim=xlim, ylim=ylim).savefig(imgname)
     # sns.scatterplot(x=ax_x, y=ax_y, hue="k", data=new_dataset).figure.savefig(imgname)
     # plot.set(xlim=xlim, ylim=ylim) # needs to be in the form (start, end)
     # plot.figure.savefig(imgname)
 
 if __name__ == '__main__': 
 
-    dataset_algs = {
-        'adult': ['LR', 'ZafarFairness', 'Kamishima', 'Feldman-SVM', 'Feldman-LR', 'Feldman-DecisionTree'],
-        'german': ['LR', 'DecisionTree', 'GaussianNB', 'Feldman-GaussianNB', 'Feldman-LR', 'Feldman-DecisionTree'],
-        'propublica-recidivism': ['SVM', 'DecisionTree', 'Calders', 'Kamishima', 'Feldman-LR', 'Feldman-DecisionTree'],
-        'ricci': ['SVM', 'Calders', 'ZafarFairness', 'Feldman-SVM', 'Feldman-LR', 'Feldman-DecisionTree']
-    }
+    # dataset_algs = {
+    #     'adult': ['LR', 'ZafarFairness', 'Kamishima', 'Feldman-SVM', 'Feldman-LR', 'Feldman-DecisionTree'],
+    #     'german': ['LR', 'DecisionTree', 'GaussianNB', 'Feldman-GaussianNB', 'Feldman-LR', 'Feldman-DecisionTree'],
+    #     'propublica-recidivism': ['SVM', 'DecisionTree', 'Calders', 'Kamishima', 'Feldman-LR', 'Feldman-DecisionTree'],
+    #     'ricci': ['SVM', 'Calders', 'ZafarFairness', 'Feldman-SVM', 'Feldman-LR', 'Feldman-DecisionTree']
+    # }
 
-    dataset_sens = {
-        'adult': 'race', 'german': 'sex-age', 'propublica-recidivism': 'race', 'ricci': 'Race'
-    }
+    # dataset_sens = {
+    #     'adult': 'race', 'german': 'sex-age', 'propublica-recidivism': 'race', 'ricci': 'Race'
+    # }
 
-    for dataset in dataset_algs:
-        sens = dataset_sens[dataset]
-        pretty_graph(dataset, sens, 'fairness', sens+'-TPR', sens+'-calibration-', None, None, dataset_algs[dataset])
-    # for alg in algs:
-    #     pretty_graph('adult', 'race', 'accuracy', 'DIbinary', 'accuracy', (0.5,0.9), (0.75, 0.85), alg)
+    # for dataset in dataset_algs:
+    #     sens = dataset_sens[dataset]
+    #     pretty_graph(dataset, sens, 'fairness', sens+'-TPR', sens+'-calibration-', None, None, dataset_algs[dataset])
+    
+    algs = ['SVM', 'GaussianNB', 'Feldman-SVM-DIavgall', 'Feldman-GaussianNB-DIavgall']
+    
+    for alg in algs:
+        pretty_graph('adult', 'race', 'accuracy', 'DIbinary', 'accuracy', (0.5,0.9), (0.75, 0.88), [alg])
     
     print("done")
